@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [8.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -24,9 +24,3 @@ jobs:
         npm test
       env:
         CI: true
-    - name: build docker image 
-      env:
-        BRANCH: ${{ github.ref }}
-        COMMIT: ${{ secret.token }}
-      run: |        
-        docker build -t xebxke/whatever${BRANCH#/ref/head/}$COMMIT
